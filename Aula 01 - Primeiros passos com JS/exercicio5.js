@@ -5,7 +5,7 @@
  Código condição de pagamento: 
  1- à vista Débito, recebe 10% de desconto;
  2- à vista no dinheiro ou pix, recebe 15% de desconto;
- 3- em duas vezes, preço normal de etiqueta sem juros;
+Aula 01 - primeiros passos 3- em duas vezes, preço normal de etiqueta sem juros;
  4- acima de duas vezes, preço normal de etiqueta mais juros de 10%.
 */
 
