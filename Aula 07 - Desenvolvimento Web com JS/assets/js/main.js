@@ -1,11 +1,23 @@
-function convertPokemonToHtml(pokemon) {
-  return `
+const pokemonList = document.getElementById("pokemonList"); //estou indo no HTML renderizado no browser, pegando a lista de pokemons pelo Id e atribuindo isto em uma variável, podendo ser manipulável.
+const loadMoreButton = document.getElementById("loadMoreButton");
+const limit = 5;
+let offset = 0;
+
+function loadPokemonItens(offset, limit) {
+  pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+    //colocamos por default que o parâmetro pokemons seja uma lista vazia para garantir que venha uma lista
+    const newHtml = pokemons
+      .map(
+        (pokemon) =>
+          `
   <li class="pokemon ${pokemon.type}">
     <span class="number">#${pokemon.number}</span>
     <span class="name">${pokemon.name}</span>
     <div class="detail">
       <ol class="types">
-        ${pokemon.types.map((type) => `<li class="type">${type}</li>`).join("")}
+        ${pokemon.types
+          .map((type) => `<li class="type ${type}">${type}</li>`)
+          .join("")}
       </ol>
       <img
         src="${pokemon.photo}"
@@ -13,18 +25,21 @@ function convertPokemonToHtml(pokemon) {
       />
     </div>
   </li>
-  `;
-  //nesta função estamos convertendo o pokemon obtido em json para uma li para colocarmos no html
+  `
+      )
+      .join("");
+
+    pokemonList.innerHTML += newHtml;
+    //pega uma lista de pokemons, mapeia os pokemons e converte em uma lista de li (html); agora junta todos estes li's sem separador nenhum.
+    // isto tudo vai virar um html novo, e por fim estou concatenando com um HTML antigo que já tinha.
+
+    //debugger; //colocando o debugger aqui, consequimos debugar o código no browser., vira um breakpoint
+  });
 }
 
-const pokemonList = document.getElementById("pokemonList"); //estou indo no HTML renderizado no browser, pegando a lista de pokemons pelo Id e atribuindo isto em uma variável, podendo ser manipulável.
+loadPokemonItens(offset, limit);
 
-pokeApi.getPokemons().then((pokemons = []) => {
-  //colocamos por default que o parâmetro pokemons seja uma lista vazia para garantir que venha uma lista
-
-  pokemonList.innerHTML += pokemons.map(convertPokemonToHtml).join("");
-  //pega uma lista de pokemons, mapeia os pokemons e converte em uma lista de li (html); agora junta todos estes li's sem separador nenhum.
-  // isto tudo vai virar um html novo, e por fim estou concatenando com um HTML antigo que já tinha.
-
-  //debugger; //colocando o debugger aqui, consequimos debugar o código no browser., vira um breakpoint
+loadMoreButton.addEventListener("click", () => {
+  offset += limit;
+  loadPokemonItens(offset, limit);
 });
