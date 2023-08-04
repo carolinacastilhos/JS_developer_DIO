@@ -45,4 +45,36 @@
 
 - Request Method: tipo de solicitação que estamos fazendo. Temos vários tipos: GET, PUT, POST, DELETE, PATCH...
 
-- toda requisição para um recurso, o método diz oq queremos fazer neste recurso.
+- toda requisição para um recurso, o método diz oq queremos fazer.
+
+### transferência de dados pela API
+
+- path params: pode ser pelo próprio path, no momento que colocamos https://pokeapi.co/api/v2/pokemon/1 ou /2, estamos identidicando com uma Id um pokemon, neste exemplo
+- query string: começa após o ? no path, e sempre é uma estrutura de chave e valor; exemplo: https://pokeapi.co/api/v2/pokemon?type=grass&name=i --> aqui temos duas query strings.
+
+## Headers
+
+- headers: são metadados da nossa requisição, então servem para descrever e muitas vezes complementar, são uma espécie de configuração da nossa requisição.
+- request headers: Diz oq aceita (por exemplo quais linguagens, com prioridades, autenticações)
+- responde headers: configuração da resposta, por exemplo, retorna um json independente do que receber na requisição.
+
+## Body
+
+- dependendo do tipo de método que estamos usando, temos o body.
+- o get não tem body na requisição. Ele deve funcionar somente com o path, query, método e headers de request
+- quando é post, o body faz sentido. Por exemplo, queremos enviar os dados de um novo pokemon, e estes novos dados estarão no body. Exemplo:
+  Request headers: content-type: application/json
+  Body {
+  "name": "Teste"
+  }
+
+### então resumindo, uma requisição é composta por uma URL, request method, resquest headers, request body, status code, response headers e response body.
+
+## Status code
+
+- servidor processa a requisição e devolve o status code
+- significa oq aconteceu com a nossa requisição
+- a família 200 representa sucesso
+- 300 redirect
+- 400 erro por parte do cliente
+- 500 erro interno no servidor
