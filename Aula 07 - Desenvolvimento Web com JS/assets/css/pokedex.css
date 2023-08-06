@@ -67,6 +67,11 @@
   margin: 0.5rem;
   padding: 1rem;
   border-radius: 1rem;
+
+  background-image: url("/assets/img/pokeball.png");
+  background-repeat: no-repeat;
+  background-size: 42%;
+  background-position: 130px 60px;
 }
 
 .pokemon .number {
@@ -111,6 +116,13 @@
   align-self: self-end;
 }
 
+/* .pokemon .detail img.pokeball {
+  opacity: 0.1;
+  transform: rotate(-30deg);
+  height: 90px;
+  position: relative;
+} */
+
 .pagination {
   display: flex;
   flex-direction: row;
@@ -123,7 +135,7 @@
 .pagination button {
   padding: 0.25rem 0.5rem;
   margin: 0.25rem 0;
-  font-size: 0.625rem;
+  font-size: 0.8rem;
   color: #fff;
   background-color: #6c79db;
   border: none;
