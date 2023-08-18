@@ -70,3 +70,53 @@ const renan = {
 console.log(renan.genero);
 
 ```
+
+## Função Construtora
+
+```
+function Pessoa(nome, idade){
+    this.nome = nome
+    this.idade = idade
+}
+
+Pessoa.prototype.falar = function() {
+    console.log(`Meu nome é: ${this.nome}`);
+}
+
+```
+
+é o mesmo que:
+
+```
+class Pessoa {
+    constructor(nome, idade) {
+        this.nome = nome
+        this.idade = idade
+    }
+
+    falar () {
+        console.log(`Meu nome é: ${this.nome}`);
+    }
+}
+
+```
+
+## Sobrescrita
+
+- basta que a propriedade esteja declarada mais p´roxima na cadeia de protótipos que irá devolver ela. Ou seja, se a gente pedir a propriedade idade para o renan, tiver a propriedade idade na pessoa, porém tiver a propriedade idade no renan tbm, vai mostrar a propriedade idade que está declarada no renan, nem vai chegar a ir para o prototipo pessoa.
+
+```
+const pessoa = {
+    idade: 18
+}
+
+const renan = {
+    nome: 'renan',
+    idade: 30,
+    __proto__: pessoa
+}
+
+console.log(renan.idade)
+```
+
+vai imprimir 30.
