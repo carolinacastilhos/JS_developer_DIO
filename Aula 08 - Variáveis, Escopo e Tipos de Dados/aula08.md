@@ -49,3 +49,24 @@ console.log(x.nome);
 
   pessoa.falar();
 ```
+
+## Orientação a Protótipo
+
+- é uma base para o objeto, é como fazemos herança no javascript.
+- quando eu falo que o prototipo do renan é pessoa, quer dizer que o renan está herdando as propriedades de pessoa.
+- uma cadeia de prototipos pode compor o objeto. Se não achar no prototipo, vai no outro que está descrito, e assim vai.
+
+```
+const pessoa = {
+    genero = 'masculino';
+}
+
+const renan = {
+    nome: 'renan',
+    idade: 30,
+    __proto__: pessoa
+}
+
+console.log(renan.genero);
+
+```
