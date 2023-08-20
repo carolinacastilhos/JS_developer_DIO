@@ -12,5 +12,6 @@ Pokedex desenvolvida em HTML, CSS e JavaScript, mostrando 151 pokemons (1ª gera
 
 ### Tecnologias utilizadas
 
-- Linguagem de programação JavaScript
-- IDE Visual Studio Code
+- JavaScript
+- Node.js
+- Visual Studio Code
