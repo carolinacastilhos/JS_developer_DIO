@@ -13,7 +13,7 @@
 
 - também são do tipo Number: +Infinity, -Infinity e NaN.
 
-## objetos
+## Objetos
 
 - coleção dinâmica de chave e valor;
 - declarar um objeto:
@@ -120,3 +120,34 @@ console.log(renan.idade)
 ```
 
 vai imprimir 30.
+
+## Formas de Criação de Objetos Literais Com Protótipos
+
+1.
+
+```
+const pessoa = {
+    genero = 'masculino'
+}
+
+const renan = {
+    nome: 'renan'.
+    __proto__: pessoa
+}
+
+console.log(renan.genero)
+```
+
+2.
+
+```
+const pessoa = {
+    genero = 'masculino'
+}
+
+const renan = Object.create(pessoa);
+
+renan.nome = 'renan';
+
+console.log(renan.genero)
+```
